@@ -25,7 +25,9 @@ try {
     }
     const token = createToken(user);
     res.cookie('gfgauthToken', token, {
-        httpOnly: true,
+        httpOnly: true,      
+      sameSite: "None",    
+      secure: true,   
         maxAge: 3600000 
     });
     return res.status(200).json({ success: true, message: "Login successful" });
@@ -38,7 +40,10 @@ try {
 
 export const handleUserLogout = (req, res) => {
     res.clearCookie('gfgauthToken', {
-        httpOnly: true,
+        httpOnly: true,      
+      sameSite: "None",    
+      secure: true,
+      maxAge: 3600000   
     });
     return res.status(200).json({ success: true, message: "Logout successful" });
 }

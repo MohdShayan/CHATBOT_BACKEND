@@ -34,7 +34,4 @@ app.use("/api/user", userRoutes);
 app.use("/api/chat", checkForAuthCookie("gfgauthToken"), chatRoutes);
 
 
-
-
-
 export default app;
