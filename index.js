@@ -17,7 +17,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173", 
-      "https://chatbot-frontend-nu-lake.vercel.app"
+      "https://geekbot-eight.vercel.app"
     ],
     credentials: true,
   })
