@@ -8,17 +8,17 @@ const router = express.Router();
 router.get("/me", checkForAuthCookie("gfgauthToken"), async (req, res) => {
   try {
     if (!req.user) {
-      return res.status(401).json({ error: "Unauthorized" });
+      return res.status(401).json({ success: false, error: "Unauthorized" });
     }
 
     const user = await USER.findById(req.user._id).select("name email");
     if (!user) {
-      return res.status(404).json({ error: "User not found" });
+      return res.status(404).json({ success: false, error: "User not found" });
     }
 
-    res.json(user);
+    res.json({ success: true, user });
   } catch (err) {
-    res.status(500).json({ error: "Server error" });
+    res.status(500).json({ success: false, error: "Server error" });
   }
 });
 
